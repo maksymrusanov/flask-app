@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+{% if notes == [] %}
+<h1>Here are no notes yet</h1>
+{% else %}
+{% for note in notes %}
+<h1>{{ note.title }}</h1>
+<p>{{ note.text }}</p>
+<button type="button" class="btn btn-danger">delete?</button>
+<button type="button" class="btn btn-warning">edit?</button>
+<button type="button" class="btn btn-success">mark as done</button>
+{% endfor %}
+{% endif %}
+{% endblock %}
