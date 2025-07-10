@@ -7,11 +7,23 @@
 <h1>Here are no notes yet</h1>
 {% else %}
 {% for note in notes %}
-<h1>{{ note.title }}</h1>
+<h1>Title</h1>
+<p>{{ note.title }}</p>
+<h2>Text</h2>
 <p>{{ note.text }}</p>
-<button type="button" class="btn btn-danger">delete?</button>
-<button type="button" class="btn btn-warning">edit?</button>
-<button type="button" class="btn btn-success">mark as done</button>
+
+<div style="display: flex; gap: 10px;">
+ <form action="/delete/{{ note.id }}" method="POST">
+      <button  class="btn btn-danger" type="submit">delete?</button>
+</form>
+<form action="/edit/{{ note.id }}" method="POST">
+      <button class="btn btn-warning" type="submit">edit?</button>
+</form>
+<form action="/mark_done/{{ note.id }}" method="POST">
+      <button class="btn btn-success" type="submit">mark as done</button>
+</div>
 {% endfor %}
 {% endif %}
 {% endblock %}
+
+

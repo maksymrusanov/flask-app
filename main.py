@@ -37,5 +37,7 @@ def create_new_task():
     return render_template("create_task.html")
 
 
+
+
 if __name__ == "__main__":
     app.run(debug=True)
