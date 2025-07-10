@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}marked done{% endblock %}
+
+{% block content %}
+{% if not notes %}
+<h1>nothing to do for now</h1>
+{% else %}
+{% for note in notes %}
+<h1>Title</h1>
+<p>{{ note.title }}</p>
+<h2>Text</h2>
+<p>{{ note.text }}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}
+

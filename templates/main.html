@@ -3,7 +3,7 @@
 {% block title %}Main Page{% endblock %}
 
 {% block content %}
-{% if notes == [] %}
+{% if not notes  %}
 <h1>Here are no notes yet</h1>
 {% else %}
 {% for note in notes %}
@@ -13,14 +13,11 @@
 <p>{{ note.text }}</p>
 
 <div style="display: flex; gap: 10px;">
- <form action="/delete/{{ note.id }}" method="POST">
-      <button  class="btn btn-danger" type="submit">delete?</button>
-</form>
-<form action="/edit/{{ note.id }}" method="POST">
-      <button class="btn btn-warning" type="submit">edit?</button>
-</form>
-<form action="/mark_done/{{ note.id }}" method="POST">
-      <button class="btn btn-success" type="submit">mark as done</button>
+    {%if note.status==False%}
+    <form action="{{url_for('mark_done',note_id=note.id)}}" method="GET">
+        <button class="btn btn-success" type="submit">mark as done</button>
+    </form>
+    {%endif%}
 </div>
 {% endfor %}
 {% endif %}
